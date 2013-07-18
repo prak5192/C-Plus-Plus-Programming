@@ -1,0 +1,343 @@
+================================================================================
+► What is OOP (Object-oriented programming)?
+SoL:
+    Object oriented programming is method of programming where a 
+system is considered as a collection of objects that interact 
+together to accomplish certain tasks. Objects are entities that 
+encapsulate data and procedures that operate on the data.
+
+In OOPS first a concept known as "Object oriented analysis(OOA)" 
+is used to specify the objects in term of real world requirements, 
+their behaviour and interactions required. The next concept would 
+be the "Object oriented design(OOD)" that converts these realtime 
+requirements as a hierarchy of objects in terms of software 
+development requirement. Finally OOPS is used to implement the 
+requirements using the C++ programming language.
+
+The main purpose of object oriented programming is to simplify the 
+design, programming and most importantly debugging a program. So 
+to modify a particular data, it is easy to identify which function 
+to use. To add additional features it is easy to identify where 
+to add functions and its related data.
+
+Following are the basic elements of Object oriented programming(OOPS)
+
+    1. Object
+    2. Classes
+    3. Inheritance
+    4. Dynamic Binding
+    5. Polymorphism
+    6. Message passing
+    7. Encapsulation
+
+================================================================================
+► How is Objects used in OOPs concept of C++?
+Sol:
+    Objects are instance of a class, that interact with each other 
+at runtime. In OOPs, Objects are decalred at the end of the class 
+definition or after the "}" braces. They can be of any type based 
+on its declaration
+Example:
+
+#include <iostream.h>
+class Cube
+{
+    public:
+        int cub( val){
+        r = val*val*val;
+        return r; 
+        }
+        void show(){
+            cout << "The cube is::" << r;
+        }   
+
+    private:
+        int val, r;
+}x;
+
+void main()
+{
+    Cube x;
+    x.cub(2);
+    x.show();
+}
+
+Result:
+
+    The cbe is :: 8
+
+In the above example "x" is an object of the class "Cube" used to access 
+the functions inside the class. 
+
+================================================================================
+► How are Classes used in OOPs concept of C++?
+Sol:
+    Classes has the data and its associated function wrapped in it. 
+Classes are also known as a collection of similar objects or objects of 
+same type. In the OOPs concept the variables declared inside a class are 
+known as "Data Members" and the functions are known as "Member Functions".
+Syntax:
+
+   class class-name
+    {
+      private:
+          variable declaration;
+          function declaration;
+      public:
+          variable declaration;
+          function declaration;
+    };
+
+Example:
+
+#include <iostream.h>
+class Square{
+     public:
+        int area( side)
+        { 
+            a =side*side;
+            return a; 
+        }
+        void show()
+        {
+            cout << "The area is::" << a;
+        }
+        private:
+            int side, a;
+}x;
+
+void main()
+{
+      Square x;
+      x.area(10);
+      x.show();
+}
+
+Result:
+
+    The area is:: 100
+
+In the above OOPs example the class "square" has functions "area" 
+and "show" to calculate the area of the square and to display the 
+area. so all these are objects that are related to the class 
+"Square". 
+
+================================================================================
+► How is Inheritance used in OOP's concept of C++?
+Sol:
+    Inheritance is a method by which new classes are created or 
+derived from the existing classes. Using Inheritance some qualities 
+of the base classes are added to the newly derived class, apart from 
+its own features The advantage of using "Inheritance" is due to 
+the reusability of classes in multiple derived classes. 
+The ":" operator is used for inherting a class.
+
+The following table lists the visibility of the base class members 
+in the derived classes.
+Base class visibility                           Derived class visibility
+              Public derivation.  Private derivation.   Protected derivation.
+Private       Not inherited       Not inherited         Not inherited
+Protected     Protected           Private               Protected
+Public        Public              Private               Protected
+
+Following are the different types of inheritance followed in C++.
+
+    1. Single inheritance
+    2. Multiple inheritance
+    3. Hierarchial inheritance
+    4. Multilevel inheritance
+    5. Hybrid inheritance
+
+Example:
+
+#include <iostream.h>
+class Value 
+{
+   protected:
+        int val;
+   public:
+        void set_values (int a)
+        { 
+            val=a;
+        }
+};
+
+class Square: public Value 
+{
+    public:
+        int square()
+        { 
+            return (val*val); 
+        }
+};
+
+int main () 
+{
+    Square sq;
+    sq.set_values (5);
+    cout << "The square of 5 is::" << sq.square() << endl;
+    return 0;
+}
+
+Result:
+    The square of 5 is:: 25
+In the above example the object "val" of class "Value" is 
+inherited in the derived class "Square". 
+
+================================================================================
+► How Dynamic Binding is used in OOPs concept of C++? 
+Sol:
+    In OOPs Dynamic Binding refers to linking a procedure call to the 
+code that will be executed only at run time. The code associated with the 
+procedure in not known until the program is executed, which is also 
+known as late binding.
+Example:
+
+#include <iostream.h>
+int Square(int x)
+{ 
+    return x*x; 
+}
+int Cube(int x)
+{ 
+    return x*x*x; 
+}
+int main()
+{
+    int x =10;
+    int choice;
+    do
+    {
+        cout << "Enter 0 for square value, 1 for cube value: ";
+        cin >> choice;
+    } while (choice < 0 || choice > 1);
+ 
+    int (*ptr) (int);
+    switch (choice)
+    {
+        case 0: 
+            ptr = Square; 
+            break;
+        case 1: 
+            ptr = Cube; 
+            break;
+    }
+    cout << "The result is: " << ptr(x) << endl;
+    return 0;
+}
+
+
+Result:
+
+    Enter 0 for square value, 1 for cube value:0
+    The result is:100
+
+In the above OOPs example the functions "Square" and "Cube" are 
+called only at runtime based on the value given for "choice". 
+Then a pointer "ptr" is used to call the appropriate function 
+to get the result.
+
+================================================================================
+► How is Polymorphism used in OOPs concept of C++?
+Sol:
+    Polymorphism is the ability of an object or reference to 
+take many different forms at different instances. These are of two 
+types one is the "compile time polymorphism" and other one is 
+the "run-time polymorphism".
+
+Compile time polymorphism:
+==========================
+In this method object is bound to the function call at the 
+compile time itself.
+
+Run time polymorphism:
+========================
+In this method object is bound to the function call only at the run time.
+
+Example:
+
+#include <iostream.h>
+class Value 
+{
+    protected:
+        int val;
+        public:
+        void set_values (int a)
+        { 
+            val=a;
+        }
+};
+class Cube: public Value 
+{   
+    public:
+        int cube()
+        { 
+            return (val*val*val); 
+        }
+};
+
+int main () {
+    Cube cb;
+    Value * ptr = &cb;
+    ptr->set_values (10);
+    cout << "The cube of 10 is::" << cb.cube() << endl;
+    return 0;
+}
+
+Result:
+    The cube of 10 is:: 1000
+
+In the above OOPs example "Cube" is a derived class of "Value". 
+To implement polymorphism a pointer "ptr" is used to reference to the 
+members of the class "Cube". This is an example for "Compile time 
+polymorphism."  
+
+================================================================================
+► How is Encapsulation used in OOP's concept of C++? What is Data Abstraction?
+Sol:
+    Encapsulation is the method of combining the data and functions 
+inside a class. This hides the data from being accessed from outside a class 
+directly, only through the functions inside the class is able to access 
+the information.
+
+This is also known as "Data Abstraction", as it gives a clear separation 
+between properties of data type and the associated implementation details. 
+There are two types, they are "function abstraction" and "data abstraction". 
+Functions that can be used without knowing how its implemented is function 
+abstraction. Data abstraction is using data without knowing how the data 
+is stored.
+
+Example:
+
+#include <iostream.h>
+class Add 
+{
+    private:
+        int x,y,r;
+    public:
+        int Addition(int x, int y)
+        {
+            r= x+y;
+            return r;
+        }
+        void show( )
+        { 
+            cout << "The sum is::" << r << "\n";
+        }
+}s;
+
+void main()
+{
+    Add s;
+    s.Addition(10, 4);
+    s.show();
+}
+Result:
+    The sum is:: 14
+In the above encapsulation example the integer values "x,y,r" of the class 
+"Add" can be accessed only through the function "Addition". These integer 
+values are encapsulated inside the class "Add".
+
+================================================================================
+► 
+
