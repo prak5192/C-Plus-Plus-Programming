@@ -339,5 +339,547 @@ In the above encapsulation example the integer values "x,y,r" of the class
 values are encapsulated inside the class "Add".
 
 ================================================================================
-► 
+► What is Single Inheritance OOP's concept in C++?
+Sol:
+    Single Inheritance is method in which a derived class has only 
+one base class.
+Example:
 
+#include <iostream.h>
+class Value 
+{
+    protected:
+      int val;
+    public:
+      void set_values (int a)
+        { val=a;}
+};
+class Cube: public Value 
+{
+    public:
+     int cube()
+       { return (val*val*val); }
+};
+int main () 
+{
+   Cube cub;
+   cub.set_values (5);
+   cout << "The Cube of 5 is::" << cub.cube() << endl;
+   return 0;
+}
+
+Result:
+    The Cube of 5 is:: 125
+
+================================================================================
+► What is Multiple Inheritance OOP's concept in C++?
+Sol:
+    Multiple Inheritance is a method by which a class is derived from 
+more than one base class.
+Example:
+
+#include <iostream.h>
+using namespace std;
+class Square
+{
+    protected:
+     int l;
+    public:
+     void set_values (int x)
+      { l=x;}
+};
+class CShow 
+{
+    public:
+     void show(int i);
+};
+
+void CShow::show (int i) 
+{
+    cout << "The area of the square is::" << i << endl;
+}
+
+class Area: public Square, public CShow
+{
+   public:
+    int area()
+      { return (l *l); }
+};
+int main () 
+{
+    Area r;
+    r.set_values (5);
+    r.show(r.area());
+    return 0;
+}
+
+Result:
+    The area of the square is:: 25
+
+================================================================================
+► What is Hierarchical Inheritance OOP's Concept in C++?
+Sol:
+    Hierarchical Inheritance is a method of inheritance where one 
+or more derived classes is derived from common base class.
+
+Example:
+
+#include <iostream.h>
+class Side
+{
+    protected:
+      int l;
+    public:
+      void set_values (int x)
+        { 
+            l=x;
+        }
+};
+
+class Square: public Side
+{
+    public:
+      int sq()
+      { 
+        return (l *l); 
+      }
+};
+
+class Cube:public Side
+{
+   public:
+     int cub()
+      { 
+        return (l *l*l); 
+      }
+};
+
+int main () 
+{
+    Square s;
+    s.set_values (10);
+    cout << "The square value is::" << s.sq() << endl;
+    Cube c;
+    c.set_values (20);
+    cout << "The cube value is::" << c.cub() << endl;
+    return 0;
+}
+
+
+Result:
+
+    The square value is:: 100
+    The cube value is::8000
+
+In the above example the two derived classes "Square", "Cube" uses 
+a single base class "Side". Thus two classes are inherited from a single 
+class. This is the hierarchical inheritance OOP's concept in C++.
+ 
+================================================================================
+► What is "Multilevel Inheritance" OOP's concept in C++?
+Sol:
+    Multilevel Inheritance is a method where a derived class is 
+derived from another derived class.
+Example:
+
+#include <iostream.h>
+class mm
+{
+    protected:
+      int rollno;
+    public:
+      void get_num(int a)
+        { rollno = a; }
+      void put_num()
+        { cout << "Roll Number Is:\n"<< rollno << "\n"; }
+};
+
+class marks : public mm
+{
+    protected:
+      int sub1;
+      int sub2;
+    public:
+      void get_marks(int x,int y)
+        {
+           sub1 = x;
+           sub2 = y;
+        }
+      void put_marks(void)
+        {
+          cout << "Subject 1:" << sub1 << "\n";
+          cout << "Subject 2:" << sub2 << "\n";
+        }
+};
+class res : public marks
+{
+     protected: 
+       float tot;
+     public:
+       void disp(void)
+          {
+            tot = sub1+sub2;
+            put_num();
+            put_marks();
+            cout << "Total:"<< tot;
+          }
+};
+
+int main()
+{
+     res std1;
+     std1.get_num(5);
+     std1.get_marks(10,20);
+     std1.disp();
+     return 0;
+}
+
+Result:
+   Roll Number Is:
+   5
+   Subject 1: 10
+   Subject 2: 20
+   Total: 30
+
+In the above example, the derived function "res" uses the function 
+"put_num()" from another derived class "marks", which just a level above. 
+This is the multilevel inheritance OOP's concept in C++.
+
+================================================================================
+► What is "Hybrid Inheritance" OOP's Concept in C++?
+Sol:
+    "Hybrid Inheritance" is a method where one or more types of 
+inheritance are combined together and used.
+Example:
+
+#include <iostream.h>
+class mm
+{
+    protected:
+      int rollno;
+    public:
+      void get_num(int a)
+       { rollno = a; }
+      void put_num()
+       { cout << "Roll Number Is:"<< rollno << "\n"; }
+};
+class marks : public mm
+{
+   protected:
+     int sub1;
+     int sub2;
+   public:
+     void get_marks(int x,int y)
+       {
+         sub1 = x;
+         sub2 = y;
+       }
+     void put_marks(void)
+       {
+          cout << "Subject 1:" << sub1 << "\n";
+          cout << "Subject 2:" << sub2 << "\n";
+      }
+};
+
+class extra 
+{
+    protected:
+      float e;
+    public:
+    void get_extra(float s)
+      {e=s;}
+    void put_extra(void)
+      { cout << "Extra Score::" << e << "\n";}
+};
+
+class res : public marks, public extra
+{
+   protected: 
+     float tot;
+   public:
+     void disp(void)
+       {
+         tot = sub1+sub2+e; 
+         put_num();
+         put_marks();
+         put_extra();
+         cout << "Total:"<< tot;
+       }
+};
+
+int main()
+{
+   res std1;
+   std1.get_num(10);
+   std1.get_marks(10,20);
+   std1.get_extra(33.12);
+   std1.disp();
+   return 0;
+}
+Result:
+
+   Roll Number Is: 10 
+   Subject 1: 10
+   Subject 2: 20
+   Extra score:33.12
+   Total: 63.12
+
+In the above example the derived class "res" uses the function 
+"put_num()". Here the "put_num()" function is derived first to 
+class "marks". Then it is deriived and used in class "res". 
+This is an example of "multilevel inheritance-OOP's concept". 
+But the class "extra" is inherited a single time in the class "res", 
+an example for "Single Inheritance". Since this code uses both 
+"multilevel" and "single" inheritence it is an example of 
+"Hybrid Inheritance".
+
+================================================================================
+► What is Function Overloading in C++?
+Sol:
+    Function Overloading is a method to define multiple functions 
+with the same name. But different tasks are performed based on 
+the number, type of arguments contained in that function.
+Example:
+
+#include <iostream.h>
+int add(int, int);
+double add( double , double );
+int add(int , int , int );
+int main()
+  {
+    cout << "Addition of 2 integers::" 
+              <
+
+
+Result:
+
+   Addition of 2 integers::13 
+   Addition of 2 double integers::25.7 
+   Addition of 3 integers::30 
+
+In the above example there are multiple "add" functions, but with 
+different arguments, types. So based on the type and arguments 
+the respective function is called.
+
+================================================================================
+► What is Operator Overloading in C++? 
+Sol:
+
+Operator Overloading is a method to define additional task or special 
+meaning to an operator in refernce to an class. Operators that cannot 
+be overloaded are class member access operator (.,.*), scope resolution 
+operator "::", "sizeof" operator and conditional operator "?:".
+Example:
+
+#include <iostream.h>
+using namespace std;
+class space
+{
+     int x, y, z;
+    public:
+     void getdata(int a, int b, int c);
+     void display(void);
+     void operator-();
+};
+void space :: getdata(int a, int b, int c)
+{ 
+     x=a;
+     y=b;
+     z=c;
+}
+void space :: display(void)
+{
+     cout << x << "";
+     cout << y << " ";
+     cout << z << " ";
+}
+void space :: operator-()
+{
+     x=-x;
+     y=-y;
+     z=-z;
+}
+int main()
+{
+     space S;
+     S.getdata(10, -20, 30);
+     cout  << "Values before overloading:: " << "\n";
+     S.display();
+     cout << "\n";
+     -S;
+     cout << "Values after overloading:: " << "\n";
+     S.display();
+     return 0;
+}
+
+
+Result:
+
+    Values before overloading::
+     10-20 30
+    Values after overloading::
+     -10 20-30
+
+In the above example the unary "-" operator is used to overload the o
+bjects got using "getdata()" of the class space. Usually the unary "-" 
+operator is changes the sign, but here it is done for the objects of 
+an class "space".
+This is operator overloading in C++.
+
+================================================================================
+► What is Virtual Functions in C++?
+Sol:
+    Virtual Function is a function that is declared within a base 
+class and redefined in the derived class. Virtual functions are 
+declared by preceding the class declaration with a keyword "virtual". 
+When a virtual function is declared C++ decides to execute a function 
+based on the type of object pointed by the base pointer and not on the 
+type of pointer.
+Example:
+
+#include <iostream.h>
+class Bclass
+{
+    public:
+       void  disp() { cout  << " BASE BASE\n" ; }
+       virtual void sh() { cout << "base base\n"; }
+};
+
+class Dclass : public Bclass
+{
+    public:
+      void disp() { cout << "DERIVED DERIVED\n"; }
+      void sh() { cout << "derived derived\n"; }
+};
+int main()
+{
+     Bclass B;
+     Dclass D;
+     Bclass *ptr;
+     
+     cout << "ptr points to base class\n" ;
+     ptr =  &B;
+     ptr->disp();
+     ptr->sh();
+   
+     cout << "ptr points derived class\n";
+     ptr = &D;
+     ptr->disp();
+     ptr->sh();
+     return 0;
+}
+
+Result:
+
+   ptr points to base class
+   BASE BASE
+   base base
+   ptr points derived class
+    BASE BASE
+   derived derived
+
+In the above example, the base ptr is used point the object D. Since the 
+"sh()" function has a derived version in the form of a virtual function, 
+it displays the base class version of "sh()".
+ 
+================================================================================
+► What is Exception Handling in C++?
+Sol:
+    Exception Handling provides a mechanism to detect and report an 
+exceptional circumstance, so that corrective action can be taken to set 
+right the error occurred. Error Handler in C++ consists of three major keywords 
+namely try, throw and catch. The "try" block is a set of code which 
+generates an exception which is thrown using the "throw" statement. 
+The "catch" block is used to catch the exception and handles it appropriately.
+
+Throw point
+    Function that causes an exception.
+try block
+    Invokes a function that contains an exception.
+catch block
+    Catches and handles the exception.
+
+Example:
+
+#include <iostream.h>
+int main()
+ {
+   int x,y;
+   cout << "Enter values of x::";
+   cin >> x;
+   cout << "Enter values of y::";
+   cin >> y;
+   int r=x-y;
+   try 
+     {
+      if ( r!=0)
+       {
+         cout << "Result of division is x/r:: " << x/r << "\n";
+       }
+      else
+       {
+         throw ( r);
+       }
+     }
+   catch( int r)
+      {
+        cout << "Division by zero exception::
+                     value of r is::" << r << "\n";
+      }
+   cout << "END";
+   return 0;
+ }
+
+
+Result:
+
+   Enter values of x::12
+   Enter values of y::12
+   Division by zero exception::value of r is::0
+
+In the above example, when the value "x" is divided by "0" an exception 
+is thrown. Using the "catch" statement the exception is caught. 
+This is the Error Handler System in C++.
+
+================================================================================
+► What is namespace in C++?
+Sol:
+    Namespace is a new concept introduced by the ANSI C++ standards 
+committee. For using identifiers it can be defined in the namespace 
+scope as below.
+Syntax:
+
+   using namespace std;
+
+In the above syntax "std" is the namespace where ANSI C++ standard 
+class libraries are defined. Even own namespaces can be defined.
+Syntax:
+
+   namespace namespace_name
+    {
+      //Declaration of 
+      // variables, functions, classes, etc.
+    }  
+
+Example:
+
+#include <iostream.h>
+using namespace std;
+namespace Own
+{
+    int a=100;
+}
+int main()
+{
+    cout << "Value of a is:: " << Own::a;
+    return 0;
+}
+Result:
+ Value of a is:: 100
+
+In the above example, a name space "Own" is used to assign a value 
+to a variable. To get the value in the "main()" function the "::" 
+operator is used.
+
+================================================================================
+► 
