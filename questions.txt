@@ -882,4 +882,219 @@ to a variable. To get the value in the "main()" function the "::"
 operator is used.
 
 ================================================================================
+► What is Type Casting in C++?
+Sol:
+    "Type Casting" is method using which a variable of one datatype is 
+converted to another datatype, to do it simple the datatype is specified 
+using parenthesis in front of the value.
+Example:
+
+#include <iostream.h>
+using namespace std;
+int main()
+{
+     short x=40;
+     int y;
+     y = (int)x;    
+     cout << "Value of y is:: "<< y <<"\nSize is::"<< sizeof(y);
+     return 0;
+}  
+
+Result:
+
+   Value of y is:: 40
+   Size is::4
+
+In the above example the short data type value of x is type cast to 
+an integer data type, which occupies "4" bytes.
+
+Type casting can also done using some typecast operators available in 
+C++. following are the typecast operators used in C++.
+
+    static_cast
+    const_cast
+    dynamic_cast
+    reinterpret_cast
+    typeid
+
+Example:
+
+#include <iostream.h>
+using namespace std;
+int main()
+  {
+     int a = 31;
+     int b = 3;
+     float x = a/b;
+     float y = static_cast<float>(a)/b;
+     cout << "Output without static_cast = " << x << endl;
+     cout << "Output with static_cast = " << y << endl;
+     cout << "Type id of x = " << typeid(x).name() << '\n';
+  }
+
+
+Result:
+
+   Output without static_cast = 10
+   Output with static_cast = 10.3333
+   Type id of x = float
+
+In the above example we have assigned the integer variable "a" to be 
+float using the static_cast operator. So the result is "10.3333". 
+
+================================================================================
+► How is static_cast operator in C++?
+Sol:
+    Static_Cast operator is used to convert a given expression to the 
+specified type. It is used convert base class pointers to the derived 
+class as well as vice versa. This is type casting in C++.
+Example:
+
+#include <iostream.h>
+using namespace std;
+int main()
+  {
+     int a = 31;
+     int b = 3;
+     float x = a/b;
+     float y = static_cast<float>(a)/b;
+     cout << "Output without static_cast = " << x << endl;
+     cout << "Output with static_cast = " << y << endl;
+     return 0;
+  }  
+
+
+Result:
+
+   Output without static_cast = 10
+   Output with static_cast = 10.3333
+
+In the above type casting example, using the static_cast to an 
+integer as "float" returns a float value.
+
+================================================================================
+► How is const_cast operator used in C++?
+Sol:
+    const_cast operator is used to add or remove a "const" 
+modifier from a type.
+Example:
+
+#include <iostream.h>
+using namespace std;
+void example(const float &a)
+{
+     float &b = const_cast (a);
+     b = 20.0;
+}
+int main()
+{
+     float c = 17.5;
+     cout << "The value before const_cast is:: " << c << endl;
+     example(c);
+     cout << "The value after const_cast is::" << c << endl;
+     return 0;
+}
+
+Result:
+
+   The value before const_cast is:: 17.5
+   The value after const_cast is:: 20
+
+In the above example the const_cast operator is used in a function 
+to assign a constant value as "20.0". So that whenever the function 
+is called the "20.0" is returned. 
+
+================================================================================
+► How is dynamic_cast operator used in C++? What is RTTI Information?
+Sol:
+    Dynamic_Cast Operator is used with pointers and objects to do 
+casting at the runtime unlike other cast operators. In order for 
+this operation, the typeid operator or exceptions to work in C++, 
+Run-Time Type Information (RTTI) must be enabled.
+Example:
+
+#include <iostream.h>
+using namespace std;
+
+struct X 
+{
+     virtual ~X() { };
+};
+
+struct Y : X { };
+
+int main() 
+{
+       Y a;
+       X * ptr1 = &a;
+       void * ptr2 = dynamic_cast(ptr1);
+       cout << "Address of ptr2:" << ptr2 << endl;
+       cout << "Address of a:" << &a << endl;
+}
+
+
+Result:
+
+   Address of ptr2: 0012FF88
+   Address of a: 0012FF88
+
+In the above example the dynamic_cast operator is used on a "ptr1", 
+so that the address of the object "a" is assigned to "ptr2" at 
+the runtime.
+
+This operator is a part of Run-Time Type Information (RTTI).
+
+================================================================================
+► How is reinterpret_cast operator used in C++?
+Sol:
+    Reinterpret_cast operator is used convert a pointer of one type to 
+another type even that of an unrelated class. This is type casting in C++.
+Example:
+
+#include <iostream.h>
+int main()
+{
+     int *ptr = new int(20);
+     cout << "First value = " << *ptr << endl;
+     void *ptr2 = reinterpret_cast(ptr);
+     int *ptr3 = reinterpret_cast(ptr2);
+     cout << "Final reinterpret cast value is::" << *ptr3 << endl;
+}
+
+Result of Type Casting:
+
+   First value = 20
+   Final reinterpret cast value is:: 20
+
+In the above example, the reinterpret_cast operator is used 
+convert a integer pointer to a pointer of type "void" then 
+converted into a integer pointer. 
+
+================================================================================
+► How is typeid operator used in C++?
+Sol:
+    typeid operator is a type casting method which is used to check 
+the type of an expression. In C++, the typeid keyword is used to 
+determine the class of an object at runtime.
+Example:
+
+#include <iostream.h>
+#include <typeinfo.h>
+int main()
+{
+     int a;
+     char *c;
+     cout << "The type of a is: " << typeid(a).name() << endl;
+     cout << "The type of c is: " << typeid(c).name() << endl;
+     return 0;
+}
+
+Result:
+
+   The type of a is: int
+   The type of c is: char *
+
+In the above example the "typeid" is used to find the data type.
+
+================================================================================
 ► 
