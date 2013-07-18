@@ -240,6 +240,9 @@ to get the result.
 ================================================================================
 ► How is Polymorphism used in OOPs concept of C++?
 Sol:
+
+    http://stackoverflow.com/questions/5854581/polymorphism-in-c
+
     Polymorphism is the ability of an object or reference to 
 take many different forms at different instances. These are of two 
 types one is the "compile time polymorphism" and other one is 
