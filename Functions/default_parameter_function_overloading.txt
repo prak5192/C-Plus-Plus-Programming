@@ -1,0 +1,23 @@
+
+Default parameters and function overloading
+==============================================
+
+Functions with default parameters may be overloaded. For example, 
+the following is allowed:
+    
+    void Print(char *strString);
+    void Print(char ch=' ');
+
+If there user were to call Print(), it would resolve to Print(' '), 
+which would print a space.
+
+However, it is important to note that default parameters do NOT count 
+towards the parameters that make the function unique. Consequently, 
+the following is not allowed:
+    
+    void PrintValues(int nValue);
+    void PrintValues(int nValue1, int nValue2=20);
+
+If the caller were to call PrintValues(10), the compiler would not be 
+able to disambiguate whether the user wanted PrintValues(int) or 
+PrintValues(int, 20) with the default value.

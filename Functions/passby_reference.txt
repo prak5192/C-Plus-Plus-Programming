@@ -1,16 +1,16 @@
 Advantages of passing by reference:
 ====================================
 1. It allows us to have the function change the value of the 
-argument, which is sometimes useful.
+   argument, which is sometimes useful.
 2. Because a copy of the argument is not made, it is fast, even when 
-used with large structs or classes.
+   used with large structs or classes.
 3. We can pass by const reference to avoid unintentional changes.
 4. We can return multiple values from a function. 
 
 Disadvantages of passing by reference:
 ========================================
 1. Because a non-const reference can not be made to a literal or 
-an expression, reference arguments must be normal variables.
+   an expression, reference arguments must be normal variables.
 2. It can be hard to tell whether a parameter passed by reference 
    is meant to be input, output, or both.
 3. It’s impossible to tell from the function call that the argument 
