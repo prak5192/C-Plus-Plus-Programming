@@ -1,0 +1,85 @@
+
+In the lesson on function overloading, you learned that you can 
+create multiple functions of the same name that work differently 
+depending on parameter type. Operator overloading allows the 
+programmer to define how operators (such as +, -, ==, =, and !) 
+should interact with various data types. Because operators in C++ 
+are implemented as functions, operator overloading works very 
+analogously to function overloading.
+
+Consider the following example:
+    int nX = 2;
+    int nY = 3;
+    cout << nX + nY << endl;
+
+C++ already knows how the plus operator (+) should be applied to 
+integer operands — the compiler adds nX and nY together and returns 
+the result. Now consider this case:
+    
+    Mystring cString1 = "Hello, ";
+    Mystring cString2 = "World!";
+    cout << cString1 + cString2 << endl;
+
+What would you expect to happen in this case? The intuitive expected 
+result is that the string “Hello, World!” is printed on the screen. 
+However, because Mystring is a user-defined class, C++ does not know 
+what operator + should do. We need to tell it how the + operator 
+should work with two objects of type Mystring. Once an operator has 
+been overloaded, C++ will call the appropriate overloaded version of 
+the operator based on parameter type. If you add two integers, the 
+integer version of operator plus will be called. If you add two 
+Mystrings, the Mystring version of operator plus will be called.
+
+Almost any operator in C++ can be overloaded. The exceptions are: 
+arithmetic if (?:), sizeof, scope (::), member selector (.), and 
+member pointer selector (.*). You can overload the + operator to 
+concatenate your user-defined string class, or add two Fraction 
+class objects together. You can overload the << operator to make 
+it easy to print your class to the screen (or a file). You can 
+overload the equality operator (==) to compare two objects. This 
+makes operator overloading one of the most useful features in C++ 
+-- simply because it allows you to work with your classes in a more 
+intuitive way.
+
+Before we go into more details, there are a few things to keep in 
+mind going forward.
+
+1. First, at least one of the operands in any overloaded operator must 
+   be a user-defined type. This means you can not overload the plus 
+   operator to work with one integer and one double. However, you could 
+   overload the plus operator to work with an integer and a Mystring.
+
+2. Second, you can only overload the operators that exist. You can not 
+   create new operators. For example, you could not create an operator 
+   ** to do exponents.
+
+3. Third, all operators keep their current precedence and associativity, 
+   regardless of what they're used for. For example, the bitwise XOR 
+   operator (^) could be overloaded to do exponents, except it has 
+   the wrong precedence and associativity and there is no way to 
+   change this.
+
+Within those confines, you will still find plenty of useful functionality 
+to overload for your custom classes!
+
+Operators as functions
+=======================
+When you see the expression nX + nY, you can translate this in your 
+head to operator+(nX, nY) (where operator+ is the name of the function). 
+Similarly dX + dY becomes operator+(dX, dY). Even though both 
+expressions call a function named operator+(), function overloading 
+is used to resolve the function calls to different versions of the 
+function based on parameter type(s). For example, In the lesson on 
+arithmetic operators, you learned that C++ does integer and floating 
+point division differently. This works because the operator/() 
+function has two flavors — one that is called for integer operands, 
+and one for floating point operands.
+
+More generally, when evaluating an expression with operators, C++ 
+looks at the operands around the operator to see what type they are. 
+If all operands are built-in types, C++ calls a built-in routine. 
+If any of the operands are user data types (eg. one of your classes), 
+it looks to see whether the class has an overloaded operator function 
+that it can call. If the compiler finds an overloaded operator whose 
+parameters match the types of the operands, it calls that function. 
+Otherwise, it produces a compiler error.
