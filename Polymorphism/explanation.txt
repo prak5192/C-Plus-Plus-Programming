@@ -1,0 +1,18 @@
+What is polymorphism?
+=======================
+
+In programming languages, polymorphism means that some code or 
+operations or objects behave differently in different contexts.
+
+For example, the + (plus) operator in C++:
+
+    4 + 5       <-- integer addition
+    3.14 + 2.0  <-- floating point addition
+    s1 + "bar"  <-- string concatenation!
+
+In C++, that type of polymorphism is called overloading.
+
+Typically, when the term polymorphism is used with C++, however, 
+it refers to using virtual methods,
+
+

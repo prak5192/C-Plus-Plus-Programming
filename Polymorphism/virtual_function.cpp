@@ -1,0 +1,60 @@
+// virtual members
+#include <iostream>
+using namespace std;
+
+class CPolygon {
+  protected:
+    int width, height;
+  public:
+    void set_values (int a, int b)
+      {     
+        cout << "Setting value in Base class"<< endl;
+        width=a; 
+        height=b; 
+      }
+    virtual int area ()
+      {     
+        return (0); 
+      }
+};
+
+class CRectangle: public CPolygon {
+  public:
+    int area ()
+      { 
+        return (width * height); 
+      }
+};
+
+class CTriangle: public CPolygon {
+  public:
+    int area ()
+      { 
+        return (width * height / 2); 
+      }
+};
+
+int main () {
+  CRectangle rect;
+  CTriangle trgl;
+  CPolygon poly;
+  CPolygon * ppoly1 = &rect;
+  CPolygon * ppoly2 = &trgl;
+  CPolygon * ppoly3 = &poly;
+  ppoly1->set_values (4,5); // Setting values from the base class
+  ppoly2->set_values (4,5); // Setting values from the base class
+  ppoly3->set_values (4,5); // Setting values from the base class
+  cout << ppoly1->area() << endl; // Call the rect area method
+  cout << ppoly2->area() << endl; // Call the trgl area method
+  cout << ppoly3->area() << endl; // Call the poly area method
+  return 0;
+}
+
+/*
+
+Note: If the method is virtual, the method dynaic binding is dependent 
+on the the object which the pointer is pointing and not the type of 
+the ponter
+
+*/
+
