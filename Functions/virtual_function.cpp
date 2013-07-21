@@ -36,8 +36,8 @@ class A
             cout << "Contructor: Base" << endl;
             a = 1;
         }
-        virtual void show(){
-       // void show(){
+       // virtual void show(){
+        void show(){
             cout <<"Base : " << a<<endl;
         }
 };
@@ -51,8 +51,8 @@ class B: public A
             cout << "Contructor: Derived" << endl;
             b = 2; 
          }
-         virtual void show(){ 
-         //void show(){ 
+        // virtual void show(){ 
+         void show(){ 
             cout << "Derived : " << b<<endl;
          }
 };
