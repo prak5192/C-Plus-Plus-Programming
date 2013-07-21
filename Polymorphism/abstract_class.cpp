@@ -60,4 +60,57 @@ int main() {
 //   static_cast<A>(b);
 }
 
+/*
+
+
+Virtual member functions are inherited. A class derived from an 
+abstract base class will also be abstract unless you override 
+each pure virtual function in the derived class.
+
+For example:
+
+class AB {
+public:
+  virtual void f() = 0;
+};
+
+class D2 : public AB {
+  void g();
+};
+
+int main() {
+  D2 d;
+}
+
+The compiler will not allow the declaration of object d because D2 
+is an abstract class; it inherited the pure virtual function f()from AB. 
+The compiler will allow the declaration of object d if you define 
+function D2::g().
+
+Note that you can derive an abstract class from a nonabstract class, 
+and you can override a non-pure virtual function with a pure virtual 
+function.
+
+You can call member functions from a constructor or destructor of an 
+abstract class. However, the results of calling (directly or indirectly) 
+a pure virtual function from its constructor are undefined. The 
+following example demonstrates this:
+
+struct A {
+  A() {
+    direct();
+    indirect();
+  }
+  virtual void direct() = 0;
+  virtual void indirect() { direct(); }
+};
+
+The default constructor of A calls the pure virtual function 
+direct() both directly and indirectly (through indirect()).
+
+The compiler issues a warning for the direct call to the pure 
+virtual function, but not for the indirect call.
+
+*/
+
 
