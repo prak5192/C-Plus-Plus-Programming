@@ -9,16 +9,22 @@ class Base {
         Base(int value): m_nValue(value){}
     protected:
         void print_value(void){
-            cout << m_nValue << endl;
+            cout << "Base :" <<  m_nValue << endl;
         }
 };
 
 class Derived: public Base {
+    private:
+        int d_nvalue;
     public:
-        Derived(int value = 20):Base(value){}
+        Derived(int dvalue, int value = 20):Base(value),d_nvalue(dvalue) {}
     
     // Changing the access qualifier of m_nValue to public
-        Base::print_value;
+        void print_value(void){
+            Base :: print_value(); // adding functionality of the base
+            cout << "Derived :" << d_nvalue << endl;
+        }
+        Base::print_value; // Changing the access rights from protected to public
 };
 
 
