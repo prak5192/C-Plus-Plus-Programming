@@ -26,11 +26,24 @@ that we can also make member functions static.
 
 
 
-Because static member functions are not attached to a particular object, they can be called directly by using the class name and the scope operator. Like static member variables, they can also be called through objects of the class type, though this is not recommended.
+Because static member functions are not attached to a particular 
+object, they can be called directly by using the class name and 
+the scope operator. Like static member variables, they can also 
+be called through objects of the class type, though this is not 
+recommended.
 
-Static member functions have two interesting quirks worth noting. First, because static member functions are not attached to an object, they have no this pointer! This makes sense when you think about it — the this pointer always points to the object that the member function is working on. Static member functions do not work on an object, so the this pointer is not needed.
+Static member functions have two interesting quirks worth noting. 
+First, because static member functions are not attached to an 
+object, they have no this pointer! This makes sense when you think 
+about it — the this pointer always points to the object that the 
+member function is working on. Static member functions do not 
+work on an object, so the this pointer is not needed.
 
-Second, static member functions can only access static member variables. They can not access non-static member variables. This is because non-static member variables must belong to a class object, and static member functions have no class object to work with!
+Second, static member functions can only access static member 
+variables. They can not access non-static member variables. This is 
+because non-static member variables must belong to a class object, 
+and static member functions have no class object to work with!
+
 */
 
 #include<iostream>

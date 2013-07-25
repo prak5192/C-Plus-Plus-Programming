@@ -4,7 +4,7 @@ Static variables in C++:
 1. It is initialized to zero when its first object of its class is 
 created. No other initialization is permitted.
 2. Only one copy of that member is created for the entire calss 
-and is shared by all the objectsof that class, No matter ow many 
+and is shared by all the objects of that class, No matter how many 
 objects are created. 
 3. It is visible ony within the class, but its life time is in
 entire program.
