@@ -30,6 +30,7 @@ Following are the basic elements of Object oriented programming(OOPS)
     6. Message passing
     7. Encapsulation
 
+
 ================================================================================
 ► How is Objects used in OOPs concept of C++?
 Sol:
