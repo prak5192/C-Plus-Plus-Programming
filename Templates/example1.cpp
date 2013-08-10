@@ -12,6 +12,9 @@ inline T const& Max (T const& a, T const& b)
 { 
     return a < b ? b:a; 
 } 
+
+/* Main starts here */
+
 int main ()
 {
  
