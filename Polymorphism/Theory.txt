@@ -1,0 +1,6 @@
+What is polymorphism?
+Sol:
+	Polymorphism means one name, multiple forms. It allows us to have 
+more than one function with the same name in a program.It allows us to 
+have overloading of operators so that an operation can exhibit different 
+behaviours in different instances.
