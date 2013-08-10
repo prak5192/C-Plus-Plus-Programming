@@ -29,7 +29,24 @@ Following are the basic elements of Object oriented programming(OOPS)
     5. Polymorphism
     6. Message passing
     7. Encapsulation
+================================================================================
+► Define Constructor?
+Sol:
+	A constructor is a member function with the same name as its class. 
+The constructor is invoked whenever an object of its associated class is 
+created.It is called constructor because it constructs the values of 
+data members of the class.
 
+================================================================================
+► What are Tokens in C++?
+Sol:
+	The smallest individual units of a program is known as tokens. 
+c++ has the following tokens :
+1. Keywords
+2. Identifiers
+3. Constants
+4. Strings
+5. Operators 
 
 ================================================================================
 ► How is Objects used in OOPs concept of C++?
